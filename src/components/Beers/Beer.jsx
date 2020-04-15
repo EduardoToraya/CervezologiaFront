@@ -21,4 +21,3 @@ const Beer = ({ _id, name, image, origin, brewery, style }) => {
 };
 
 export { Beer };
-

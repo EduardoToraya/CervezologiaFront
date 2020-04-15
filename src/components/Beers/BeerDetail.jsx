@@ -4,10 +4,12 @@ import { useParams } from "react-router-dom";
 import axios from 'axios';
 import './style.scss';
 
+import { HeartFilled} from '@ant-design/icons';
+
 const { Header, Content, Footer } = Layout;
 const { Title } = Typography;
 
-const beerAtt = ['brewery', 'origin', 'style', 'abv', 'srm']
+const beerAtt = ['brewery', 'origin', 'style', 'srm', 'abv']
 
 const BeerDetail = () => {
 
@@ -33,12 +35,19 @@ const BeerDetail = () => {
           <Col sm={5} className="beer-image" style={{ backgroundImage: `url(${beer.photoUrl})`, height: "500px", marginRight: "15px" }}>
           </Col>
           <Col sm={15}>
-            <Descriptions title="Informacion">
+            <Descriptions title="Información">
               {beerAtt.map((attribute) => (
-                <Descriptions.Item label={attribute.toUpperCase()}>
+                <Descriptions.Item className = "beers-detail" label={attribute.toUpperCase()}>
                   {beer[attribute]}
                 </Descriptions.Item>
               ))}
+
+
+              <Descriptions.Item className = "beers-detail" label = "Color">
+                <br/>
+                <HeartFilled spin = {true} style={{ fontSize: '100px', color: '#BF7138'}}/>
+              </Descriptions.Item>
+
             </Descriptions>
           </Col>
         </Row>
@@ -48,4 +57,3 @@ const BeerDetail = () => {
 };
 
 export { BeerDetail };
-
